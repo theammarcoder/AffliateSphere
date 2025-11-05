@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-800;
+  }
+  
+  body {
+    @apply bg-darker text-white antialiased;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-darker;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-purple-700;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-primary hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/50;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300;
+  }
+
+  /* Input styles */
+  .input-field {
+    @apply w-full bg-dark border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-300;
+  }
+  
+  .input-field::placeholder {
+    @apply text-gray-500;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-dark rounded-xl p-6 border border-gray-800 transition-all duration-300;
+  }
+  
+  .card-hover {
+    @apply card hover:shadow-xl hover:shadow-primary/20 hover:border-primary/50 hover:-translate-y-1 cursor-pointer;
+  }
+
+  /* Product card animations */
+  .product-card {
+    @apply relative overflow-hidden rounded-xl bg-dark border border-gray-800 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/50 hover:-translate-y-2;
+  }
+  
+  .product-image {
+    @apply w-full h-56 object-cover transition-transform duration-500;
+  }
+  
+  .product-card:hover .product-image {
+    @apply scale-110;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply animate-spin rounded-full border-4 border-gray-700 border-t-primary;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
