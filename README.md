@@ -1,9 +1,10 @@
 # AffiliateSphere
 
 ![AffiliateSphere](https://img.shields.io/badge/Status-Production%20Ready-success)
+![Next.js](https://img.shields.io/badge/Next.js-14-black)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
-A modern, AI-powered affiliate marketing platform featuring an intuitive admin panel and responsive user-facing website. Built with the MERN stack and integrated with Google Gemini AI for automated product data extraction.
+A modern, AI-powered affiliate marketing platform built with **Next.js 14**. Features a beautiful user-facing website AND complete admin panel, all in one full-stack application with light/dark mode support.
 
 ## 🌟 Key Features
 
@@ -29,25 +30,19 @@ A modern, AI-powered affiliate marketing platform featuring an intuitive admin p
 - 💰 Dynamic pricing display
 - 🛒 Smart "Buy Now" buttons (auto-detect store from affiliate link)
 - 📧 Integrated contact form with email notifications
-- 🌈 Beautiful gradient animations and transitions
+- 🌓 **Light/Dark mode toggle** with theme persistence
+- 🎨 Beautiful gradient animations and transitions
 
 ## 🛠️ Tech Stack
 
-### Backend
-- **Node.js** + **Express.js** - Server framework
-- **MongoDB** - Database
-- **Mongoose** - ODM
-- **Google Gemini AI** - Product data extraction
-- **bcryptjs** - Password hashing
-- **express-session** - Session management
-- **Nodemailer** - Email service
-
-### Frontend
-- **React 18** - UI library
-- **Vite** - Build tool
-- **React Router v6** - Routing
-- **Axios** - HTTP client
-- **Tailwind CSS** - Styling
+- **Framework:** Next.js 14 (App Router) - Full-stack React framework
+- **Frontend:** React 18, Tailwind CSS - Modern UI with light/dark mode
+- **Backend:** Next.js API Routes - Built-in serverless functions
+- **Database:** MongoDB + Mongoose - NoSQL database
+- **AI:** Google Gemini AI - Automated product data extraction
+- **Auth:** Express Session - Secure admin authentication
+- **Email:** Nodemailer - Contact form functionality
+- **Icons:** Lucide React - Beautiful icon library
 - **Lucide React** - Icons
 
 ## 🚀 Quick Start
@@ -59,36 +54,40 @@ A modern, AI-powered affiliate marketing platform featuring an intuitive admin p
 
 ### Installation
 
-1. **Clone the repository**
+1. **Navigate to the project**
 ```bash
-cd "d:/Batch No 10/Personal Project/E-Commerce"
+cd "d:/Batch No 10/Personal Project/E-Commerce/frontend-nextjs"
 ```
 
-2. **Set up Backend**
+2. **Install dependencies**
 ```bash
-cd backend
 npm install
+```
 
-# Initialize admin user (only needed once)
-node scripts/initAdmin.js
+3. **Setup environment variables**
+Create `.env.local` file with:
+```env
+MONGO_URI=your_mongodb_connection_string
+SESSION_SECRET=your_secret_key
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_gmail_app_password
+GEMINI_API_KEY=your_gemini_api_key
+NODE_ENV=development
+```
 
-# Start backend server
+4. **Initialize admin user** (first time only)
+```bash
+npm run init:admin
+```
+
+5. **Start the application**
+```bash
 npm run dev
 ```
 
-3. **Set up Frontend**
-```bash
-cd ../frontend
-npm install
-
-# Start frontend dev server
-npm run dev
-```
-
-4. **Access the Application**
-- **User Website**: http://localhost:5173
-- **Admin Panel**: http://localhost:5173/admin/login
-- **Backend API**: http://localhost:5000
+6. **Access the Application**
+- **User Website**: http://localhost:3000
+- **Admin Panel**: http://localhost:3000/admin/login
 
 ## 🔐 Admin Credentials
 
@@ -98,65 +97,84 @@ npm run dev
 ## 📁 Project Structure
 
 ```
-E-Commerce/
-├── backend/
-│   ├── config/
-│   │   └── db.js                 # MongoDB connection
-│   ├── models/
-│   │   ├── Admin.js              # Admin user model
-│   │   ├── Category.js           # Category model
-│   │   ├── Product.js            # Product model
-│   │   └── Contact.js            # Contact message model
-│   ├── routes/
-│   │   ├── authRoutes.js         # Authentication routes
-│   │   ├── categoryRoutes.js     # Category CRUD routes
-│   │   ├── productRoutes.js      # Product CRUD + AI routes
-│   │   ├── contactRoutes.js      # Contact form routes
-│   │   └── statsRoutes.js        # Dashboard statistics
-│   ├── middleware/
-│   │   └── authMiddleware.js     # Protected route middleware
-│   ├── services/
-│   │   ├── geminiService.js      # Gemini AI integration
-│   │   └── emailService.js       # Email service
-│   ├── scripts/
-│   │   └── initAdmin.js          # Admin initialization script
-│   ├── .env                      # Environment variables
-│   ├── server.js                 # Express server
-│   └── package.json
+frontend-nextjs/                   # Full-stack Next.js application
+├── public/
+│   ├── favicon.svg               # Professional SVG favicon
+│   ├── logo.svg                  # Brand logo
+│   ├── apple-touch-icon.svg      # iOS icon
+│   └── manifest.json             # PWA manifest
 │
-└── frontend/
-    ├── src/
-    │   ├── components/
-    │   │   ├── user/             # User-facing components
-    │   │   ├── Alert.jsx
-    │   │   ├── LoadingSpinner.jsx
-    │   │   └── ProtectedRoute.jsx
-    │   ├── context/
-    │   │   └── AuthContext.jsx   # Auth state management
-    │   ├── layouts/
-    │   │   ├── AdminLayout.jsx   # Admin panel layout
-    │   │   └── UserLayout.jsx    # User website layout
-    │   ├── pages/
-    │   │   ├── admin/            # Admin panel pages
-    │   │   └── user/             # User-facing pages
-    │   ├── utils/
-    │   │   └── helpers.js        # Utility functions
-    │   ├── App.jsx               # Main app with routing
-    │   ├── main.jsx
-    │   └── index.css             # Global styles
-    ├── index.html
-    ├── vite.config.js
-    ├── tailwind.config.js
-    └── package.json
+├── src/
+│   ├── app/                      # Next.js App Router
+│   │   ├── api/                  # 🔧 Backend API Routes
+│   │   │   ├── auth/            # Authentication endpoints
+│   │   │   ├── categories/      # Category CRUD
+│   │   │   ├── products/        # Product CRUD + AI
+│   │   │   ├── contact/         # Contact form
+│   │   │   └── stats/           # Dashboard stats
+│   │   │
+│   │   ├── admin/               # 👨‍💼 Admin Panel
+│   │   │   ├── dashboard/       # Admin dashboard
+│   │   │   ├── categories/      # Category management
+│   │   │   ├── products/        # Product management
+│   │   │   └── login/           # Admin login
+│   │   │
+│   │   ├── categories/          # User category page
+│   │   ├── contact/             # Contact page
+│   │   ├── page.js              # Home page
+│   │   ├── layout.js            # Root layout
+│   │   └── globals.css          # Global styles
+│   │
+│   ├── components/
+│   │   ├── user/                # User components
+│   │   │   ├── Header.js
+│   │   │   ├── Footer.js
+│   │   │   └── ProductCard.js
+│   │   └── admin/               # Admin components
+│   │       └── AdminLayout.js
+│   │
+│   ├── lib/                     # Backend logic
+│   │   ├── db.js                # MongoDB connection
+│   │   ├── models/              # Mongoose models
+│   │   ├── middleware/          # Auth middleware
+│   │   └── services/            # AI & Email services
+│   │
+│   ├── context/
+│   │   └── ThemeContext.js      # Light/Dark theme
+│   │
+│   └── utils/
+│       └── helpers.js
+│
+├── scripts/
+│   └── initAdmin.js             # Admin init script
+│
+├── .env.local                   # Environment variables
+├── next.config.js
+├── tailwind.config.js
+└── package.json
 ```
 
 ## 🎨 Design System
 
 ### Color Palette
-- **Primary**: `#6A0DAD` (Deep Purple) - Buttons, links, highlights
-- **Dark**: `#0F0F0F` - Card backgrounds
-- **Darker**: `#000000` - Main background
-- **Accents**: Pink gradients for visual appeal
+
+**Primary Color**
+- `#8b5cf6` (Purple-500) - Primary actions, gradients
+
+**Light Mode**
+- Background: `#ffffff` (White)
+- Secondary BG: `#f9fafb` (Gray-50)
+- Text: `#111827` (Gray-900)
+- Border: `#e5e7eb` (Gray-200)
+
+**Dark Mode**
+- Background: `#0f172a` (Slate-900)
+- Secondary BG: `#1e293b` (Slate-800)
+- Text: `#f8fafc` (Slate-50)
+- Border: `#334155` (Slate-700)
+
+**Gradients**
+- Primary: Purple-500 to Pink-500 (`#8b5cf6` → `#ec4899`)
 
 ### Animations
 - Fade in effects

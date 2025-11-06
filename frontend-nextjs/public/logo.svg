@@ -1,0 +1,40 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Circle/Sphere -->
+  <circle cx="256" cy="256" r="240" fill="url(#gradient)" opacity="0.1"/>
+  <circle cx="256" cy="256" r="220" stroke="url(#gradient)" stroke-width="8" fill="none"/>
+  
+  <!-- Link/Chain Symbol (representing affiliate links) -->
+  <!-- Left Link -->
+  <path d="M 180 220 Q 140 220 140 260 Q 140 300 180 300" 
+        stroke="url(#gradient)" stroke-width="32" fill="none" 
+        stroke-linecap="round"/>
+  
+  <!-- Right Link -->
+  <path d="M 332 220 Q 372 220 372 260 Q 372 300 332 300" 
+        stroke="url(#gradient)" stroke-width="32" fill="none" 
+        stroke-linecap="round"/>
+  
+  <!-- Center Connection Bar -->
+  <rect x="200" y="244" width="112" height="32" rx="16" fill="url(#gradient)"/>
+  
+  <!-- Shopping Cart/Commerce Element -->
+  <circle cx="256" cy="150" r="24" fill="url(#gradient)"/>
+  <path d="M 256 150 L 256 200" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Dollar Sign -->
+  <text x="256" y="400" font-family="Arial, sans-serif" font-size="120" font-weight="bold" 
+        fill="url(#gradient)" text-anchor="middle" dominant-baseline="middle">$</text>
+  
+  <!-- Globe/World Lines (subtle) -->
+  <ellipse cx="256" cy="256" rx="220" ry="100" stroke="url(#gradient)" 
+           stroke-width="2" fill="none" opacity="0.3"/>
+  <ellipse cx="256" cy="256" rx="100" ry="220" stroke="url(#gradient)" 
+           stroke-width="2" fill="none" opacity="0.3"/>
+</svg>

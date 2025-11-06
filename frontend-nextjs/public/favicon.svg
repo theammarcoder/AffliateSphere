@@ -1,0 +1,23 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#grad)"/>
+  
+  <!-- Letter 'A' for Affiliate -->
+  <path d="M 20 45 L 26 28 L 32 12 L 38 28 L 44 45" 
+        stroke="white" stroke-width="4" fill="none" 
+        stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Horizontal bar of 'A' -->
+  <line x1="24" y1="36" x2="40" y2="36" 
+        stroke="white" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Small sphere dot -->
+  <circle cx="32" cy="52" r="2.5" fill="white"/>
+</svg>
