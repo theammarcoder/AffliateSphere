@@ -242,7 +242,7 @@ export default function CategoryManagement() {
           <div className="bg-light-bg dark:bg-dark-bg border border-red-500 rounded-xl p-6 w-full max-w-md animate-scale-in">
             <h2 className="text-2xl font-bold mb-4 text-red-500">Delete Category?</h2>
             <p className="text-light-textSecondary dark:text-dark-textSecondary mb-6">
-              Are you sure you want to delete "<strong className="text-light-text dark:text-dark-text">{deleteConfirm.name}</strong>"? 
+              Are you sure you want to delete &quot;<strong className="text-light-text dark:text-dark-text">{deleteConfirm.name}</strong>&quot;? 
               This action cannot be undone.
             </p>
             <p className="text-sm text-yellow-500 mb-6">

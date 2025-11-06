@@ -188,7 +188,7 @@ export default function AddProduct() {
               </button>
             </div>
             <p className="text-xs text-light-textSecondary dark:text-dark-textSecondary mt-2">
-              Paste your affiliate link and click "AI Extract" to automatically fill title and description
+              Paste your affiliate link and click &quot;AI Extract&quot; to automatically fill title and description
             </p>
           </div>
 
