@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import ProductCard from '@/components/user/ProductCard';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { Filter, SlidersHorizontal } from 'lucide-react';
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -213,5 +213,19 @@ export default function Home() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-light-bg dark:bg-dark-bg transition-colors duration-300">
+        <div className="flex justify-center items-center min-h-[400px]">
+          <LoadingSpinner size="lg" text="Loading..." />
+        </div>
+      </div>
+    }>
+      <HomeContent />
+    </Suspense>
   );
 }
