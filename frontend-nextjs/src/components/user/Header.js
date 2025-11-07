@@ -3,16 +3,28 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Search, Menu, X, Home, Grid, Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
 const Header = ({ onSearch }) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { theme, toggleTheme } = useTheme();
 
   const handleSearch = (e) => {
     e.preventDefault();
+    if (searchQuery.trim()) {
+      // Navigate to home page with search query
+      router.push(`/?search=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      // Clear search if empty
+      router.push('/');
+    }
+    
+    // Legacy support for onSearch callback
     if (onSearch) {
       onSearch(searchQuery);
     }

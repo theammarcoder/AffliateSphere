@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import ProductCard from '@/components/user/ProductCard';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { Filter, SlidersHorizontal } from 'lucide-react';
 
 export default function Home() {
+  const searchParams = useSearchParams();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,6 +48,12 @@ export default function Home() {
       setLoading(false);
     }
   };
+
+  // Sync search query from URL params
+  useEffect(() => {
+    const urlSearchQuery = searchParams.get('search') || '';
+    setSearchQuery(urlSearchQuery);
+  }, [searchParams]);
 
   useEffect(() => {
     fetchCategories();
@@ -91,7 +99,8 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
           <div>
             <h2 className="text-2xl font-bold">
-              {selectedCategory === 'all' ? 'All Products' : categories.find(c => c._id === selectedCategory)?.name}
+              {searchQuery ? `Search Results: "${searchQuery}"` : 
+               selectedCategory === 'all' ? 'All Products' : categories.find(c => c._id === selectedCategory)?.name}
               <span className="text-light-textSecondary dark:text-dark-textSecondary text-lg ml-2">({products.length})</span>
             </h2>
             <p className="text-sm text-light-textSecondary dark:text-dark-textSecondary mt-1">
@@ -192,6 +201,7 @@ export default function Home() {
                   onClick={() => {
                     setSelectedCategory('all');
                     setSearchQuery('');
+                    window.location.href = '/';
                   }}
                   className="btn-primary mt-4"
                 >
