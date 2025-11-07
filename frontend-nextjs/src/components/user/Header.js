@@ -30,6 +30,16 @@ const Header = ({ onSearch }) => {
     }
   };
 
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    
+    // Auto-clear search when input becomes empty
+    if (value === '' && searchParams.get('search')) {
+      router.push('/');
+    }
+  };
+
   return (
     <header className="bg-white dark:bg-dark-bgSecondary border-b border-light-border dark:border-dark-border sticky top-0 z-50 backdrop-blur-lg bg-white/95 dark:bg-dark-bgSecondary/95 transition-colors duration-300">
       <div className="container mx-auto px-4">
@@ -60,7 +70,7 @@ const Header = ({ onSearch }) => {
               <input
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleSearchChange}
                 placeholder="Search products, categories, or tags..."
                 className="w-full bg-light-bgSecondary dark:bg-dark-bg border border-light-border dark:border-dark-border text-light-text dark:text-dark-text pl-12 pr-4 py-3 rounded-full focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/50 transition-all"
               />
@@ -136,7 +146,7 @@ const Header = ({ onSearch }) => {
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={handleSearchChange}
               placeholder="Search products..."
               className="w-full bg-light-bgSecondary dark:bg-dark-bg border border-light-border dark:border-dark-border text-light-text dark:text-dark-text pl-12 pr-4 py-3 rounded-full focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/50 transition-all"
             />

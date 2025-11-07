@@ -121,9 +121,9 @@ export default function Home() {
           </button>
         </div>
 
-        <div className={`grid grid-cols-1 md:grid-cols-4 gap-6 ${showFilters ? '' : 'max-md:hidden'}`}>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {/* Sidebar Filters */}
-          <div className="md:col-span-1">
+          <div className={`md:col-span-1 ${showFilters ? 'block' : 'hidden md:block'}`}>
             <div className="card sticky top-24">
               <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                 <Filter size={20} />
